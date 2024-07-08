@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-fz+%#ar14wvvifx=!ep6pnmy(%h4bo$lnxf=#jje!2i)_&e#^8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000']
 
 
 # Application definition
@@ -37,9 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	
-    # own
-	'pages'
+    'auth42',
+	'pages',
 ]
 
 MIDDLEWARE = [

@@ -1,24 +1,12 @@
-"""
-URL configuration for transcendence project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+# myproject/urls.py
 from django.contrib import admin
-from pages.views import home_view
-from django.urls import path
+from django.urls import path, include
+from auth42.views import auth, callback, get_data_from_api, post_data_to_api
 
 urlpatterns = [
-	path('', home_view, name='home'),
     path('admin/', admin.site.urls),
+    path('', callback, name='callback'),  # Kök URL callback view'ine yönlendirir
+    path('auth/', auth, name='auth'),  # auth42 URL yapılandırmasını dahil edin
+    path('get-data/', get_data_from_api, name='get_data'),  # get-data URL yapılandırmasını dahil edin
+    path('post-data/', post_data_to_api, name='post_data'),  # post-data URL yapılandırmasını dahil edin
 ]
