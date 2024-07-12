@@ -91,7 +91,7 @@ def login_view(request):
     if user is None:
         # Kullanıcı kimlik bilgileri yanlış
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
-
+    user.is_active = True
     # Kullanıcı kimlik bilgileri doğru, sadece JWT access token oluştur
     access_token = AccessToken.for_user(user)
 
@@ -124,7 +124,7 @@ def register(request):
 
         try:
             # Yeni kullanıcıyı oluşturalım
-            user = User.objects.create_user(email=email, username=username, password=password)
+            user = User.objects.create_user(email=email, username=username, password=password, is_42user=False)
 
             # Başarılı yanıt döndürelim
             return JsonResponse({'success': 'User registered successfully'}, status=201)
