@@ -90,9 +90,7 @@ def login_view(request):
 
     if user is None:
         # Kullanıcı kimlik bilgileri yanlış
-        return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
-    user.is_active = True
-    # Kullanıcı kimlik bilgileri doğru, sadece JWT access token oluştur
+        return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)    # Kullanıcı kimlik bilgileri doğru, sadece JWT access token oluştur
     access_token = AccessToken.for_user(user)
 
     # Token içine username claim'ini ekleyin

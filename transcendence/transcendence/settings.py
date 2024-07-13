@@ -25,9 +25,17 @@ SECRET_KEY = 'django-insecure-fz+%#ar14wvvifx=!ep6pnmy(%h4bo$lnxf=#jje!2i)_&e#^8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000']
+# settings.py
+ALLOWED_HOSTS = ['*']
+CORS_ALLOWED_ORIGINS = [
+    'https://42transendence.online',
+]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://42transendence.online',
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -42,6 +50,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'auth42',
 	'user',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +61,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'transcendence.urls'
